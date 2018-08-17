@@ -42,6 +42,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\*\.js$/,
+                use: [ 'script-loader' ]
+            },
+            {
                 // Regex for TypeScript files
                 test: /\.ts$/,
                 // 'awesome-typescript-loader' - translates TypeScript to JS

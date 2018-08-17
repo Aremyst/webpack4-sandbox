@@ -392,9 +392,9 @@
     Mediator.Channel = Channel;
     Mediator.Subscriber = Subscriber;
     Mediator.version = "0.9.8";
+    
+    // Create global Mediator immediately.
+    window.Mediator = new Mediator();
 
     return Mediator;
 }));
-
-// Create global Mediator immediately.
-window.Mediator = new Mediator();
