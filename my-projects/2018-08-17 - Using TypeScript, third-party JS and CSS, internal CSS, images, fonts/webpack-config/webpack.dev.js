@@ -1,6 +1,9 @@
 // Import Helpers library with 'root' function, which let's us go up one level in current directory.
 const helpers = require('./helpers');
 
+// Import "Webpack" NodeJS module.
+const webpack = require('webpack');
+
 // Webpack configuration
 module.exports = {
     // Entry point for Webpack
@@ -44,5 +47,6 @@ module.exports = {
     
     // Set plugins
     plugins: [
+        new webpack.NamedModulesPlugin()
     ]
 };
