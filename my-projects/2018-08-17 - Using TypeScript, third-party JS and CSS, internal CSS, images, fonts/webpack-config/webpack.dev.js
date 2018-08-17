@@ -4,6 +4,11 @@ const helpers = require('./helpers');
 // Import "Webpack" NodeJS module.
 const webpack = require('webpack');
 
+// Import HTML Webpack Plugin from NPM package.
+// Used to add <script src="<name of resulting webpack bundle>"></script> to our dist/dev/index.html.
+// It can also be used for CSS files to add <link> tags to the HTML <head>.
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 // Webpack configuration
 module.exports = {
     // Entry point for Webpack
@@ -47,6 +52,15 @@ module.exports = {
     
     // Set plugins
     plugins: [
-        new webpack.NamedModulesPlugin()
+        new webpack.NamedModulesPlugin(),
+    
+        // This Plugin takes a template HTML file, and any bundles that it creates, it will add references to those
+        // bundles to the template HTML file.
+        // We'll be doing this with the index.html, so Webpack will be producing our index.html.
+        // Webpack will write into index.thml all bundles it creates.
+        new HtmlWebpackPlugin({
+            // HTML file, to which <script src="some_bundle"> will be added
+            template: 'webpack-config/index.html'
+        }),
     ]
 };
